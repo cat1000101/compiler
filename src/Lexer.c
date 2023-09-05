@@ -1,4 +1,4 @@
-#include "tokenID.h"
+#include "Lexer.h"
 #include "string.h"
 
 int tokenID(char *token);
@@ -96,7 +96,7 @@ int isOtherToken(char *token)
 
 int isNameIDValuable(char *token)
 {
-    retuen -1;
+    return -1;
 }
 
 int isNum(char *token)
@@ -122,5 +122,21 @@ int isToken(char *token)
 }
 
 int isError(char *token){
-    return true;
+    return 1;
 }
+/*
+char NextString(char* string)
+{
+    char* newString = string;
+    int count = 0;
+    while (*newString != '\0')
+    {
+        count++;
+    }
+    char returnString[count];
+    for (int i = 0; i < count; i++)
+    {
+        returnString[i] = string[i + 1];
+    }
+}
+*/

@@ -10,18 +10,18 @@
 				{
 					"includeDirectories" : 
 					[
-						"C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include",
-						"C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/include",
-						"C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed",
-						"C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include",
+						"C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include",
+						"C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/include",
+						"C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed",
+						"C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include",
 						"/MinGW/include"
 					],
 					"linkDirectories" : 
 					[
-						"C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0",
-						"C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/lib/gcc",
-						"C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/lib",
-						"C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/lib",
+						"C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0",
+						"C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/lib/gcc",
+						"C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/lib",
+						"C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/lib",
 						"/MinGW/lib"
 					],
 					"linkFrameworkDirectories" : [],
@@ -45,7 +45,7 @@
 						"kernel32"
 					]
 				},
-				"path" : "C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/bin/gcc.exe",
+				"path" : "C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/gcc.exe",
 				"version" : "13.1.0"
 			},
 			"language" : "C",
@@ -59,7 +59,7 @@
 			"compiler" : 
 			{
 				"implicit" : {},
-				"path" : "C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/bin/windres.exe"
+				"path" : "C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/windres.exe"
 			},
 			"language" : "RC",
 			"sourceFileExtensions" : 

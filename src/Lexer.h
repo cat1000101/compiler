@@ -1,8 +1,8 @@
 
-#ifndef COMPILER_TOKENID_H
-#define COMPILER_TOKENID_H
+#ifndef COMPILER_LEXER_H
+#define COMPILER_LEXER_H
 
-#endif //COMPILER_TOKENID_H
+#endif //COMPILE_LEXER_H
 
 enum tokenID {
     // Reserved words
@@ -28,3 +28,5 @@ int isNum(char *token);
 int isError(char *token);
 
 int isToken(char *token);
+
+char NextChar(char *string);
