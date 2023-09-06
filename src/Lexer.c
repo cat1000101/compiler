@@ -9,8 +9,6 @@ void InitLexer(const char *source)
     const char **source1 = &source;
     while (**source1 != '\0') {
         printf("started");
-        SkipSpace(source1);
-        printf("skipped white space");
         int tokenID = GetNextToken(source1);
         printf("got next token");
         NextToken(source1);
@@ -212,7 +210,7 @@ int isValuableType(char *token)
     else if (strcmp(token, "enum") == 0)
         return ENUM;
     else
-        return -1;
+        return 0;
 }
 
 int isValuableModifier(char *token)
@@ -231,7 +229,7 @@ int isValuableModifier(char *token)
     else if (strcmp(token, "const") == 0)
         return CONST;
     else
-        return -1;
+        return 0;
 }
 
 int isReservedWord(char *token)
@@ -264,7 +262,7 @@ int isReservedWord(char *token)
     else if (strcmp(token, "return") == 0)
         return RETURNY;
     else
-        return -1;
+        return 0;
 }
 
 int isSpecialSymbol(char *token)
@@ -321,11 +319,11 @@ int isSpecialSymbol(char *token)
 int isOtherToken(char *token)
 {
     //NAME_ID_VALUABLE = 32, NUM, ERROR = 34
-    if (isNameIDValuable(token) != -1)
+    if (isNameIDValuable(token))
         return NAME_ID_VALUABLE;
-    else if (isNum(token) != -1)
+    else if (isNum(token))
         return NUM;
-    else if (isError(token) != -1)
+    else if (isError(token))
         return ERROR;
     else
         return 0;
@@ -349,9 +347,9 @@ int isToken(char *token)
 
 int isNameIDValuable(char *token)
 {
-    if (getPreviousToken(&token) == ERROR)
-        return -1;
-    for (int i = 0; i < strlen(token); i++)
+    if (!(getPreviousToken(&token) >= 0 && getPreviousToken(&token) <= 19))
+        return 0;
+    for (int i = 0; i < GetTokenLength(&token); i++)
     {
         if ((token[i] < 'a' || token[i] > 'z') && (token[i] < 'A' || token[i] > 'Z') && !(token[i] < '0' || token[i] > '9') && token[i] != '_' && token[i] != '$')
             return 0;
@@ -377,11 +375,11 @@ void NextChar(const char **source)
 
 void NextToken(const char **source)
 {
-    SkipSpace(source);
     while (**source != ' ' && **source != '\t' && **source != '\n' && **source != '\0' && isSpecialSymbol(source))
     {
         NextChar(source);
     }
+    SkipSpace(source);
     return;
 }
 
@@ -390,38 +388,47 @@ int getTokenID(char *token)
     return isToken(token);
 }
 
-int GetNextToken(const char **source)
+int GetTokenLength(const char **source)
 {
-    printf("started the proc");
-    char *token = (char *)malloc(sizeof(char) * 100);
-    printf("malloc");
     int i = 0;
-    SkipSpace(source);
-    printf("idk");
-    while (*(*source + i) != ' ' && *(*source + i) != '\t' && *(*source + i) != '\n' && *(*source + i) != '\0' &&
-            isSpecialSymbol((char*)(*source + i)))
+    while (*(*source + i) != ' ' && *(*source + i) != '\t' && *(*source + i) != '\n' && *(*source + i) != '\0' && isSpecialSymbol(*source + i))
     {
-        token[i] = *(*source + i);
-        printf("wth");
         i++;
     }
-    printf("did the while");
-    token[i] = '\0';
-    printf("did the thing but not return the token");
-    i = isToken(token);
-    free(token);
     return i;
 }
+
+int GetNextToken(const char **source)
+{
+    char *token = (char *)malloc(sizeof(char) * 100);
+    char *newPtr = *source;
+    int i = 0;
+    NextToken(&newPtr);
+    while(*newPtr != ' ' && *newPtr != '\t' && *newPtr != '\n' && *newPtr != '\0' && isSpecialSymbol(newPtr))
+    {
+        token[i] = *newPtr;
+        i++;
+        newPtr++;
+    }
+    token[i] = '\0';
+    return getTokenID(token);
+}
+
+int GetThisToken(const char **source)
+{
+    return 0;
+}
+
 
 int getPreviousToken(const char **source)
 {
     char *token = (char *)malloc(sizeof(char) * 100);
-    int i = 0;
+    int i = 1;
     while (*(*source - i) != ' ' && *(*source - i) != '\t' && *(*source - i) != '\n' && *(*source - i) != '\0' && isSpecialSymbol(*source + i))
     {
         i++;
     }
-    for (int j = 0; j < i; j++)
+    for (int j = 0; j < i -1 ; j++)
     {
         token[j] = *(*source - i + j);
     }

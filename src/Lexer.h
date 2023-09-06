@@ -14,7 +14,7 @@ enum tokenID {
     // Special symbols
     PLUS = 200, MINUS, TIMES, DIVIDE, EQUAL, LESS_THAN, GREATER_THAN, OPEN_PARENTHESIS, CLOSE_PARENTHESIS, SEMICOLON,OPEN_BRACKET, CLOSE_BRACKET, OPEN_BRACE, CLOSE_BRACE, COMMA, ASSIGNMENT, NOT_EQUAL, LESS_THAN_OR_EQUAL, GREATER_THAN_OR_EQUAL, AND, OR, NOT,
     // Other tokens2
-    NAME_ID_VALUABLE = 400, NUM, ERROR = -1
+    NAME_ID_VALUABLE = 400, NUM, ERROR = -100
 };
 
 void InitLexer(const char *source);
@@ -24,7 +24,11 @@ void NextChar(const char **source);
 
 void NextToken(const char **source);
 
+int GetTokenLength(const char **source);
+
 int GetNextToken(const char **source);
+
+int GetThisToken(const char **source);
 
 int getPreviousToken(const char **source);
 
