@@ -8,9 +8,13 @@ void InitLexer(const char *source)
 {
     const char **source1 = &source;
     while (**source1 != '\0') {
+        printf("started");
         SkipSpace(source1);
+        printf("skipped white space");
         int tokenID = GetNextToken(source1);
+        printf("got next token");
         NextToken(source1);
+        printf("ended the next token");
         switch (tokenID) {
             case INT:
                 printf("INT\n");
@@ -311,7 +315,7 @@ int isSpecialSymbol(char *token)
     else if (strcmp(token, "!") == 0)
         return NOT;
     else
-        return -1;
+        return 0;
 }
 
 int isOtherToken(char *token)
@@ -324,23 +328,23 @@ int isOtherToken(char *token)
     else if (isError(token) != -1)
         return ERROR;
     else
-        return -1;
+        return 0;
 }
 
 int isToken(char *token)
 {
-    if (isValuableType(token) != -1)
+    if (isValuableType(token))
         return isValuableType(token);
-    else if (isValuableModifier(token) != -1)
+    else if (isValuableModifier(token))
         return isValuableModifier(token);
-    else if (isReservedWord(token) != -1)
+    else if (isReservedWord(token))
         return isReservedWord(token);
-    else if (isSpecialSymbol(token) != -1)
+    else if (isSpecialSymbol(token))
         return isSpecialSymbol(token);
-    else if (isOtherToken(token) != -1)
+    else if (isOtherToken(token))
         return isOtherToken(token);
     else
-        return -1;
+        return 0;
 }
 
 int isNameIDValuable(char *token)
@@ -350,7 +354,7 @@ int isNameIDValuable(char *token)
     for (int i = 0; i < strlen(token); i++)
     {
         if ((token[i] < 'a' || token[i] > 'z') && (token[i] < 'A' || token[i] > 'Z') && !(token[i] < '0' || token[i] > '9') && token[i] != '_' && token[i] != '$')
-            return -1;
+            return 0;
     }
     return NAME_ID_VALUABLE;
 }
@@ -360,7 +364,7 @@ int isNum(char *token)
     for (int i = 0; i < strlen(token); i++)
     {
         if (token[i] < '0' || token[i] > '9')
-            return -1;
+            return 0;
     }
     return NUM;
 }
@@ -374,7 +378,7 @@ void NextChar(const char **source)
 void NextToken(const char **source)
 {
     SkipSpace(source);
-    while (**source != ' ' && **source != '\t' && **source != '\n' && **source != '\0')
+    while (**source != ' ' && **source != '\t' && **source != '\n' && **source != '\0' && isSpecialSymbol(source))
     {
         NextChar(source);
     }
@@ -388,17 +392,22 @@ int getTokenID(char *token)
 
 int GetNextToken(const char **source)
 {
+    printf("started the proc");
     char *token = (char *)malloc(sizeof(char) * 100);
+    printf("malloc");
     int i = 0;
-    while (*(*source + i) == ' ' || *(*source + i) == '\t' || *(*source + i) == '\n')
-        i++;
-
-    while (**source != ' ' && **source != '\t' && **source != '\n' && **source != '\0')
+    SkipSpace(source);
+    printf("idk");
+    while (*(*source + i) != ' ' && *(*source + i) != '\t' && *(*source + i) != '\n' && *(*source + i) != '\0' &&
+            isSpecialSymbol((char*)(*source + i)))
     {
         token[i] = *(*source + i);
+        printf("wth");
         i++;
     }
+    printf("did the while");
     token[i] = '\0';
+    printf("did the thing but not return the token");
     i = isToken(token);
     free(token);
     return i;
@@ -408,7 +417,7 @@ int getPreviousToken(const char **source)
 {
     char *token = (char *)malloc(sizeof(char) * 100);
     int i = 0;
-    while (*(*source - i) != ' ' && *(*source - i) != '\t' && *(*source - i) != '\n' && *(*source - i) != '\0')
+    while (*(*source - i) != ' ' && *(*source - i) != '\t' && *(*source - i) != '\n' && *(*source - i) != '\0' && isSpecialSymbol(*source + i))
     {
         i++;
     }
@@ -421,15 +430,16 @@ int getPreviousToken(const char **source)
 
 int SkipSpace(const char **string)
 {
-    while (**string == ' ' || **string == '\t' || **string == '\n')
+    while (**string == ' ' || **string == '\t' || **string == '\n' && isSpecialSymbol(*string))
         *string = *string + 1;
     return 0;
 }
 
 int isError(char *token)
 {
+    /*
     if (strcmp(token, "ERROR") == 0)
         return ERROR;
-    else
-        return -1;
+    else*/
+        return 0;
 }
