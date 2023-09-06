@@ -182,8 +182,7 @@ void InitLexer(const char *source)
     }
 
 
-    return;
-}
+    }
 
 
 int isValuableType(char *token)
@@ -265,52 +264,56 @@ int isReservedWord(char *token)
         return 0;
 }
 
-int isSpecialSymbol(char *token)
-{
+int isSpecialSymbol(char *token) {
+    char temp[3] = {token[0], token[1], '\0'};
+    if (token[1] >= 'a' && token[1] <= 'z' || token[1] >= 'A' && token[1] <= 'Z' || token[1] >= '0' && token[1] <= '9' )
+    {
+        temp[1] = '\0';
+    }
     // PLUS = 200, MINUS, TIMES, DIVIDE, EQUAL, LESS_THAN, GREATER_THAN, OPEN_PARENTHESIS, CLOSE_PARENTHESIS, SEMICOLON,OPEN_BRACKET, CLOSE_BRACKET, OPEN_BRACE, CLOSE_BRACE, COMMA, ASSIGNMENT, NOT_EQUAL, LESS_THAN_OR_EQUAL, GREATER_THAN_OR_EQUAL, AND, OR, NOT,
-    if (strcmp(token, "+") == 0)
+    if (strcmp(temp, "+") == 0)
         return PLUS;
-    else if (strcmp(token, "-") == 0)
+    else if (strcmp(temp, "-") == 0)
         return MINUS;
-    else if (strcmp(token, "*") == 0)
+    else if (strcmp(temp, "*") == 0)
         return TIMES;
-    else if (strcmp(token, "/") == 0)
+    else if (strcmp(temp, "/") == 0)
         return DIVIDE;
-    else if (strcmp(token, "=") == 0)
+    else if (strcmp(temp, "=") == 0)
         return EQUAL;
-    else if (strcmp(token, "<") == 0)
+    else if (strcmp(temp, "<") == 0)
         return LESS_THAN;
-    else if (strcmp(token, ">") == 0)
+    else if (strcmp(temp, ">") == 0)
         return GREATER_THAN;
-    else if (strcmp(token, "(") == 0)
+    else if (strcmp(temp, "(") == 0)
         return OPEN_PARENTHESIS;
-    else if (strcmp(token, ")") == 0)
+    else if (strcmp(temp, ")") == 0)
         return CLOSE_PARENTHESIS;
-    else if (strcmp(token, ";") == 0)
+    else if (strcmp(temp, ";") == 0)
         return SEMICOLON;
-    else if (strcmp(token, "[") == 0)
+    else if (strcmp(temp, "[") == 0)
         return OPEN_BRACKET;
-    else if (strcmp(token, "]") == 0)
+    else if (strcmp(temp, "]") == 0)
         return CLOSE_BRACKET;
-    else if (strcmp(token, "{") == 0)
+    else if (strcmp(temp, "{") == 0)
         return OPEN_BRACE;
-    else if (strcmp(token, "}") == 0)
+    else if (strcmp(temp, "}") == 0)
         return CLOSE_BRACE;
-    else if (strcmp(token, ",") == 0)
+    else if (strcmp(temp, ",") == 0)
         return COMMA;
-    else if (strcmp(token, "==") == 0)
+    else if (strcmp(temp, "==") == 0)
         return ASSIGNMENT;
-    else if (strcmp(token, "!=") == 0)
+    else if (strcmp(temp, "!=") == 0)
         return NOT_EQUAL;
-    else if (strcmp(token, "<=") == 0)
+    else if (strcmp(temp, "<=") == 0)
         return LESS_THAN_OR_EQUAL;
-    else if (strcmp(token, ">=") == 0)
+    else if (strcmp(temp, ">=") == 0)
         return GREATER_THAN_OR_EQUAL;
-    else if (strcmp(token, "&&") == 0)
+    else if (strcmp(temp, "&&") == 0)
         return AND;
-    else if (strcmp(token, "||") == 0)
+    else if (strcmp(temp, "||") == 0)
         return OR;
-    else if (strcmp(token, "!") == 0)
+    else if (strcmp(temp, "!") == 0)
         return NOT;
     else
         return 0;
@@ -331,6 +334,7 @@ int isOtherToken(char *token)
 
 int isToken(char *token)
 {
+    printf("11oken: %s\n", token);
     if (isValuableType(token))
         return isValuableType(token);
     else if (isValuableModifier(token))
@@ -370,7 +374,6 @@ int isNum(char *token)
 void NextChar(const char **source)
 {
     *source = *source + 1;
-    return;
 }
 
 void NextToken(const char **source)
@@ -379,8 +382,9 @@ void NextToken(const char **source)
     {
         NextChar(source);
     }
+    printf("31source: %s %i\n", *source, source);
     SkipSpace(source);
-    return;
+    printf("32source: %s %i \n", *source, source);
 }
 
 int getTokenID(char *token)
@@ -403,7 +407,9 @@ int GetNextToken(const char **source)
     char *token = (char *)malloc(sizeof(char) * 100);
     char *newPtr = *source;
     int i = 0;
+    printf("newPtr: %s\n", newPtr);
     NextToken(&newPtr);
+    printf("newPtr: %s\n", newPtr);
     while(*newPtr != ' ' && *newPtr != '\t' && *newPtr != '\n' && *newPtr != '\0' && isSpecialSymbol(newPtr))
     {
         token[i] = *newPtr;
@@ -411,6 +417,7 @@ int GetNextToken(const char **source)
         newPtr++;
     }
     token[i] = '\0';
+    printf("token: %s\n", token);
     return getTokenID(token);
 }
 
@@ -424,6 +431,7 @@ int getPreviousToken(const char **source)
 {
     char *token = (char *)malloc(sizeof(char) * 100);
     int i = 1;
+    printf("2source: %s\n", *source);
     while (*(*source - i) != ' ' && *(*source - i) != '\t' && *(*source - i) != '\n' && *(*source - i) != '\0' && isSpecialSymbol(*source + i))
     {
         i++;
@@ -432,6 +440,8 @@ int getPreviousToken(const char **source)
     {
         token[j] = *(*source - i + j);
     }
+    token[i - 1] = '\0';
+    printf("2token: %s\n", token);
     return getTokenID(token);
 }
 
