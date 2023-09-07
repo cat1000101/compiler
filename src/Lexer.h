@@ -6,21 +6,20 @@
 
 enum tokenID {
     // Valuable Types
-    INT = 0,
-    VOID,
-    FLOAT,
-    LONG,
-    DOUBLE,
+    INT = 1,
+    BOOL,
     CHAR,
     SHORT,
-    BOOL,
+    LONG,
+    FLOAT,
+    DOUBLE,
+    VOID,
     AUTO,
     ENUM,
     // valuable modifiers
     SIGNED = 20,
     UNSIGNED,
     STRUCT,
-    SIZEOF,
     STATIC,
     CONST,
     // Reserved words
@@ -63,6 +62,8 @@ enum tokenID {
     // Other tokens
     NAME_ID_VALUABLE = 400,
     NUM,
+    TRUE,
+    FALSE,
     ERROR = -100
 };
 
@@ -103,8 +104,6 @@ void nextToken(struct lexer *lexer);
 
 void previousToken(struct lexer *lexer);
 
-void skipSpaces(struct lexer *lexer);
-
 void skipComments(struct lexer *lexer);
 
 enum tokenID getID(char *value);
@@ -118,3 +117,5 @@ enum tokenID getReservedWordID(char *value);
 enum tokenID getSpaicelSymbolID(char *value);
 
 enum tokenID getOtherTokenID(char *value);
+
+int isNumber(struct lexer *lexer);
