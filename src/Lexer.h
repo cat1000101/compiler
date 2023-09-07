@@ -6,51 +6,115 @@
 
 enum tokenID {
     // Valuable Types
-    INT = 0, VOID, FLOAT, LONG, DOUBLE, CHAR, SHORT,  BOOL, AUTO, ENUM,
+    INT = 0,
+    VOID,
+    FLOAT,
+    LONG,
+    DOUBLE,
+    CHAR,
+    SHORT,
+    BOOL,
+    AUTO,
+    ENUM,
     // valuable modifiers
-    SIGNED = 20, UNSIGNED, STRUCT, SIZEOF, STATIC, CONST,
+    SIGNED = 20,
+    UNSIGNED,
+    STRUCT,
+    SIZEOF,
+    STATIC,
+    CONST,
     // Reserved words
-    IF = 100, ELSE, RETURN, WHILE,FOR, BREAK, CONTINUE, SWITCH, CASE, DEFAULT, DO, GOTO, RETURNY,
+    IF = 100,
+    ELSE,
+    RETURN,
+    WHILE,
+    FOR,
+    BREAK,
+    CONTINUE,
+    SWITCH,
+    CASE,
+    DEFAULT,
+    DO,
+    GOTO,
+    RETURNY,
     // Special symbols
-    PLUS = 200, MINUS, TIMES, DIVIDE, EQUAL, LESS_THAN, GREATER_THAN, OPEN_PARENTHESIS, CLOSE_PARENTHESIS, SEMICOLON,OPEN_BRACKET, CLOSE_BRACKET, OPEN_BRACE, CLOSE_BRACE, COMMA, ASSIGNMENT, NOT_EQUAL, LESS_THAN_OR_EQUAL, GREATER_THAN_OR_EQUAL, AND, OR, NOT,
-    // Other tokens2
-    NAME_ID_VALUABLE = 400, NUM, ERROR = -100
+    PLUS = 200,
+    MINUS,
+    TIMES,
+    DIVIDE,
+    EQUAL,
+    LESS_THAN,
+    GREATER_THAN,
+    OPEN_PARENTHESIS,
+    CLOSE_PARENTHESIS,
+    SEMICOLON,
+    OPEN_BRACKET,
+    CLOSE_BRACKET,
+    OPEN_BRACE,
+    CLOSE_BRACE,
+    COMMA,
+    ASSIGNMENT,
+    NOT_EQUAL,
+    LESS_THAN_OR_EQUAL,
+    GREATER_THAN_OR_EQUAL,
+    AND,
+    OR,
+    NOT,
+    // Other tokens
+    NAME_ID_VALUABLE = 400,
+    NUM,
+    ERROR = -100
 };
 
-void InitLexer(const char *source);
+struct token {
+    enum tokenID id;
+    char *value;
+    int line;
+    int column;
+};
+
+struct lexer {
+    char *source;
+    int index;
+    int line;
+    int column;
+};
 
 
-void NextChar(const char **source);
+struct token *createToken(enum tokenID id, char *value, int line, int column);
 
-void NextToken(const char **source);
+void freeToken(struct token *token);
 
-int GetTokenLength(const char **source);
+struct lexer *createLexer(char *source);
 
-int GetNextToken(const char **source);
+void freeLexer(struct lexer *lexer);
 
-int GetThisToken(const char **source);
+void printToken(struct token *token);
 
-int getPreviousToken(const char **source);
+void printLexer(struct lexer *lexer);
 
-int SkipSpace(const char **string);
+struct token *getToken(struct lexer *lexer);
 
-int getTokenID(char *token);
+struct token *getNextToken(struct lexer *lexer);
 
-int isToken(char *token);
+struct token *getPreviousToken(struct lexer *lexer);
 
-int isValuableType(char *token);
+void nextToken(struct lexer *lexer);
 
-int isValuableModifier(char *token);
+void previousToken(struct lexer *lexer);
 
-int isReservedWord(char *token);
+void skipSpaces(struct lexer *lexer);
 
-int isSpecialSymbol(char *token);
+void skipComments(struct lexer *lexer);
 
-int isOtherToken(char *token);
+enum tokenID getID(char *value);
 
-int isNameIDValuable(char *token);
+enum tokenID getValueableID(char *value);
 
-int isNum(char *token);
+enum tokenID getValueableModifierID(char *value);
 
-int isError(char *token);
+enum tokenID getReservedWordID(char *value);
 
+enum tokenID getSpaicelSymbolID(char *value);
+
+enum tokenID getOtherTokenID(char *value);
