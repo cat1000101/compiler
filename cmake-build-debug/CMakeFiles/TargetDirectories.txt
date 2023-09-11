@@ -1,3 +1,3 @@
-C:/Dev/Clion/c/compiler/cmake-build-debug/CMakeFiles/compiler.dir
-C:/Dev/Clion/c/compiler/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Dev/Clion/c/compiler/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/CMakeFiles/compiler.dir
+/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/CMakeFiles/rebuild_cache.dir

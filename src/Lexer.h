@@ -75,11 +75,17 @@ struct token {
     int column;
 };
 
+struct tokenCollection {
+    struct token *token;
+    struct tokenCollection *next;
+};
+
 struct lexer {
     char *source;
     int index;
     int line;
     int column;
+    struct tokenCollection *tokens;
 };
 
 
@@ -90,6 +96,14 @@ void freeToken(struct token *token);
 struct lexer *createLexer(char *source);
 
 void freeLexer(struct lexer *lexer);
+
+struct tokenCollection *createTokenCollection(struct token *token);
+
+void freeTokenCollection(struct tokenCollection *tokenCollection);
+
+void addToken(struct lexer *lexer, struct token *token);
+
+void printTokenCollection(struct tokenCollection *tokenCollection);
 
 void printToken(struct token *token);
 

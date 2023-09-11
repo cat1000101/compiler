@@ -18,6 +18,30 @@ void freeToken(struct token *token) {
     free(token);
 }
 
+struct tokenCollection *createTokenCollection(struct token *token) {
+    struct tokenCollection *tokenCollection = malloc(sizeof(struct tokenCollection));
+    tokenCollection->token = token;
+    tokenCollection->next = NULL;
+    return tokenCollection;
+}
+
+void freeTokenCollection(struct tokenCollection *tokenCollection) {
+    freeToken(tokenCollection->token);
+    free(tokenCollection);
+}
+
+void addToken(struct lexer *lexer, struct token *token) {
+    struct tokenCollection *tokenCollection = lexer->tokens;
+    if (tokenCollection->token == NULL) {
+        tokenCollection->token = token;
+    } else {
+        while (tokenCollection->next != NULL) {
+            tokenCollection = tokenCollection->next;
+        }
+        tokenCollection->next = createTokenCollection(token);
+    }
+}
+
 struct lexer *createLexer(char *source) {
     struct lexer *lexer = malloc(sizeof(struct lexer));
     lexer->source = source;
@@ -36,8 +60,18 @@ void printToken(struct token *token) {
     printf("Token: %d, %s, %d, %d\n", token->id, token->value, token->line, token->column);
 }
 
+void printTokenCollection(struct tokenCollection *tokenCollection) {
+    printf("TokenCollection: ");
+    while (tokenCollection != NULL) {
+        printf("%d, %s, %d, %d\n", tokenCollection->token->id, tokenCollection->token->value,
+               tokenCollection->token->line, tokenCollection->token->column);
+        tokenCollection = tokenCollection->next;
+    }
+}
+
 void printLexer(struct lexer *lexer) {
     printf("Lexer: %s, %d, %d\n", lexer->source, lexer->line, lexer->column);
+    printTokenCollection(lexer->tokens);
 }
 
 enum tokenID getID(char *value) {
@@ -235,6 +269,23 @@ struct token *getToken(struct lexer *lexer) {
         value[lexer->index - index] = '\0';
         return createToken(STRING, value, line, column);
     }
+    char *valueSpeicel = malloc(sizeof(char) * 2);
+    valueSpeicel[0] = c;
+    valueSpeicel[1] = '\0';
+    if (getSpaicelSymbolID(valueSpeicel)) {
+        lexer->index++;
+        lexer->column++;
+        return createToken(getSpaicelSymbolID(valueSpeicel), valueSpeicel, lexer->line, lexer->column);
+    }
+    char *valueSpeicel2 = malloc(sizeof(char) * 3);
+    valueSpeicel2[0] = c;
+    valueSpeicel2[1] = lexer->source[lexer->index + 1];
+    valueSpeicel2[2] = '\0';
+    if (getSpaicelSymbolID(valueSpeicel2)) {
+        lexer->index++;
+        lexer->column++;
+        return createToken(getSpaicelSymbolID(valueSpeicel2), valueSpeicel2, lexer->line, lexer->column);
+    }
     int index = lexer->index;
     int line = lexer->line;
     int column = lexer->column;
@@ -243,6 +294,7 @@ struct token *getToken(struct lexer *lexer) {
         lexer->column++;
         c = lexer->source[lexer->index];
     }
+    skipWhiteSpaces(lexer);
     char *value = malloc(sizeof(char) * (lexer->index - index + 1));
     memcpy(value, lexer->source + index, (size_t) (lexer->index - index));
     value[lexer->index - index] = '\0';

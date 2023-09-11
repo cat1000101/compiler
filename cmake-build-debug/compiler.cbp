@@ -8,88 +8,86 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Dev/compiler/compiler/cmake-build-debug"/>
+				<Option working_dir="/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="compiler">
-				<Option output="C:/Dev/compiler/compiler/cmake-build-debug/compiler.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Dev/compiler/compiler/cmake-build-debug"/>
+				<Option output="/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/compiler" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/string.h"/>
-					<Add directory="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
-					<Add directory="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
-					<Add directory="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
-					<Add directory="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
-					<Add directory="/mingw/include"/>
+					<Add directory="/home/cat_1000101/Desktop/programming/c/compiler/C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/string.h"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 compiler"/>
-					<CompileFile command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 compiler"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="compiler/fast">
-				<Option output="C:/Dev/compiler/compiler/cmake-build-debug/compiler.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Dev/compiler/compiler/cmake-build-debug"/>
+				<Option output="/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/compiler" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/string.h"/>
-					<Add directory="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
-					<Add directory="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
-					<Add directory="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
-					<Add directory="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
-					<Add directory="/mingw/include"/>
+					<Add directory="/home/cat_1000101/Desktop/programming/c/compiler/C:/Users/udbe3/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/string.h"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 compiler/fast"/>
-					<CompileFile command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 compiler/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Dev/compiler/compiler/cmake-build-debug"/>
+				<Option working_dir="/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Dev/compiler/compiler/cmake-build-debug"/>
+				<Option working_dir="/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/cat/AppData/Local/Programs/CLion/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Dev/compiler/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/cat_1000101/Desktop/programming/c/compiler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Dev/compiler/compiler/src/Lexer.c">
+		<Unit filename="/home/cat_1000101/Desktop/programming/c/compiler/src/Lexer.c">
 			<Option target="compiler"/>
 		</Unit>
-		<Unit filename="C:/Dev/compiler/compiler/src/Lexer.h">
+		<Unit filename="/home/cat_1000101/Desktop/programming/c/compiler/src/Lexer.h">
 			<Option target="compiler"/>
 		</Unit>
-		<Unit filename="C:/Dev/compiler/compiler/src/main.c">
+		<Unit filename="/home/cat_1000101/Desktop/programming/c/compiler/src/main.c">
 			<Option target="compiler"/>
 		</Unit>
-		<Unit filename="C:/Dev/compiler/compiler/CMakeLists.txt">
+		<Unit filename="/home/cat_1000101/Desktop/programming/c/compiler/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
