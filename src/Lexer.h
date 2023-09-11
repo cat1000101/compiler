@@ -16,6 +16,7 @@ enum tokenID {
     VOID,
     AUTO,
     ENUM,
+    STRING,
     // valuable modifiers
     SIGNED = 20,
     UNSIGNED,
@@ -105,6 +106,8 @@ void nextToken(struct lexer *lexer);
 void previousToken(struct lexer *lexer);
 
 void skipComments(struct lexer *lexer);
+
+void skipWhiteSpaces(struct lexer *lexer);
 
 enum tokenID getID(char *value);
 

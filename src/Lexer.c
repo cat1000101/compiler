@@ -210,6 +210,43 @@ int isNumber(struct lexer *lexer) {
 }
 
 struct token *getToken(struct lexer *lexer) {
+    char c = lexer->source[lexer->index];
+    if (c == '/' && (lexer->source[lexer->index + 1] == '/' || lexer->source[lexer->index + 1] == '*')) {
+        skipComments(lexer);
+        skipWhiteSpaces(lexer);
+        return getToken(lexer);
+    }
+    if (c == "'" || c == '"') {
+        int index = lexer->index;
+        int line = lexer->line;
+        int column = lexer->column;
+        lexer->index++;
+        lexer->column++;
+        c = lexer->source[lexer->index];
+        while (c != '\'' && c != '"') {
+            lexer->index++;
+            lexer->column++;
+            c = lexer->source[lexer->index];
+        }
+        lexer->index++;
+        lexer->column++;
+        char *value = malloc(sizeof(char) * (lexer->index - index + 1));
+        memcpy(value, lexer->source + index, (size_t) (lexer->index - index));
+        value[lexer->index - index] = '\0';
+        return createToken(STRING, value, line, column);
+    }
+    int index = lexer->index;
+    int line = lexer->line;
+    int column = lexer->column;
+    while ((c >= 'a' && c <= 'z') ||(c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_') {
+        lexer->index++;
+        lexer->column++;
+        c = lexer->source[lexer->index];
+    }
+    char *value = malloc(sizeof(char) * (lexer->index - index + 1));
+    memcpy(value, lexer->source + index, (size_t) (lexer->index - index));
+    value[lexer->index - index] = '\0';
+    return createToken(getID(value), value, line, column);
 
 }
 
@@ -303,5 +340,20 @@ void skipComments(struct lexer *lexer) {
         }
     } else {
         printf("ERROR: Expected '/' but got '%c' at line %d, column %d\n", c, lexer->line, lexer->column);
+    }
+}
+
+
+void skipWhiteSpaces(struct lexer *lexer){
+    char c = lexer->source[lexer->index];
+    while (c == ' ' || c == '\t' || c == '\n') {
+        if (c == '\n') {
+            lexer->line++;
+            lexer->column = 1;
+        } else {
+            lexer->column++;
+        }
+        lexer->index++;
+        c = lexer->source[lexer->index];
     }
 }
