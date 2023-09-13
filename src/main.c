@@ -12,6 +12,6 @@ int main() {
         printToken(token);
         freeToken(token);
     }
-    printLexer(lexer);
+    //printLexer(lexer);
     return 0;
 }

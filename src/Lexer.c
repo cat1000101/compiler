@@ -214,7 +214,9 @@ enum tokenID getSpaicelSymbolID(char *value) {
 }
 
 enum tokenID getOtherTokenID(char *value) {
-    if (strcmp(value, "true") == 0) {
+    if (isNumber(value)) {
+        return NUM;
+    } else if (strcmp(value, "true") == 0) {
         return TRUE;
     } else if (strcmp(value, "false") == 0) {
         return FALSE;
@@ -289,7 +291,7 @@ struct token *getToken(struct lexer *lexer) {
     int index = lexer->index;
     int line = lexer->line;
     int column = lexer->column;
-    while ((c >= 'a' && c <= 'z') ||(c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_') {
+    while ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_') {
         lexer->index++;
         lexer->column++;
         c = lexer->source[lexer->index];
@@ -396,7 +398,7 @@ void skipComments(struct lexer *lexer) {
 }
 
 
-void skipWhiteSpaces(struct lexer *lexer){
+void skipWhiteSpaces(struct lexer *lexer) {
     char c = lexer->source[lexer->index];
     while (c == ' ' || c == '\t' || c == '\n') {
         if (c == '\n') {
